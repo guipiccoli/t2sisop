@@ -59,6 +59,7 @@ class LinkedList:
         elif aux == self.tail:
             if not ((nodo,tamanho) in self.lista_espera):
                 self.lista_espera.append((nodo,tamanho))
+            self.fragmentacao(self.head,tamanho,0)
             return False
         else:
             return self.add(aux.next, nodo, tamanho)
