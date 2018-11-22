@@ -7,16 +7,19 @@ class Node:
         # inicio e fim do bloco
         self.start = 0
         self.end = 0
+        #referencias para outros nodos
         self.prev = None
         self.next = None
 
 class LinkedList:
     def __init__(self, max, min):
+        #nodo que abrange mi a mf
         nodo = Node('L', 0)
         nodo.start = min
         nodo.end = max
         self.head = nodo
         self.tail = nodo
+
         #espaco de memoria
         self.max = max
         self.min = min
@@ -24,7 +27,7 @@ class LinkedList:
         self.lista_espera = []
 
 
-    def add(self,aux, nodo, tamanho):
+    def add(self, aux, nodo, tamanho):
         if aux.tipo == 'L' and (aux.end - aux.start) > tamanho:
 
             #primeiro nodo da lista
