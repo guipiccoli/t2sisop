@@ -133,25 +133,26 @@ class LinkedList:
                 self.espaco_livre()
                 break
 
+def main ():
+    file =  open('caso1.txt', 'r')
+    linha = file.readline()
+    modoUtilizado = int(linha)
+    linha = file.readline()
+    mi = int(linha)
+    linha = file.readline()
+    mf = int(linha)
+    listaNodos = LinkedList(mf, mi)
 
+    qtdBlocos = 1
+    for linha in file:
+        tipo, num = linha.split(' ')
+        num = int(num)
+        if tipo == "S":
+            nodo = Node(tipo,qtdBlocos)
+            listaNodos.add(listaNodos.head, nodo, num)
+            qtdBlocos += 1
+        elif tipo == "L":
+            listaNodos.liberaBloco(listaNodos.head,num)
+    file.close()
 
-file =  open('caso2.txt', 'r')
-linha = file.readline()
-modoUtilizado = int(linha)
-linha = file.readline()
-mi = int(linha)
-linha = file.readline()
-mf = int(linha)
-listaNodos = LinkedList(mf, mi)
-
-qtdBlocos = 1
-for linha in file:
-    tipo, num = linha.split(' ')
-    num = int(num)
-    if tipo == "S":
-        nodo = Node(tipo,qtdBlocos)
-        listaNodos.add(listaNodos.head, nodo, num)
-        qtdBlocos += 1
-    elif tipo == "L":
-        listaNodos.liberaBloco(listaNodos.head,num)
-file.close()
+if __name__ == "__main__": main()
