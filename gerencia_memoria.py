@@ -52,21 +52,21 @@ class LinkedList:
                 aux.prev.next = nodo
                 aux.prev = nodo
                 nodo.next = aux
-                print("Alocacao para o Bloco",nodo.num,"entre",nodo.start,"-",nodo.end)
+                print("Alocacao Bloco",nodo.num,"entre",nodo.start,"-",nodo.end)
                 return True
 
         #ultimo nodo da lista
         elif aux == self.tail:
             if not ((nodo,tamanho) in self.lista_espera):
                 self.lista_espera.append((nodo,tamanho))
-            self.fragmentacao(self.head,tamanho,0)
+                self.printCasos(self.head,tamanho,0)
             return False
         else:
             return self.add(aux.next, nodo, tamanho)
 
 
     #PRINTS / verifica se há fragmentação externa
-    def fragmentacao(self, nodo, tamanho, espacoLivre):
+    def printCasos(self, nodo, tamanho, espacoLivre):
         if nodo.tipo == "S":
             print(nodo.start, "-", nodo.end, "bloco", nodo.num, " tamanho:", nodo.end - nodo.start)
         else:
@@ -78,7 +78,7 @@ class LinkedList:
             else:
                 print(espacoLivre," livres,", tamanho, "solicitados - fragmentacao externa")
         else:
-            self.fragmentacao(nodo.next, tamanho, espacoLivre)
+            self.printCasos(nodo.next, tamanho, espacoLivre)
 
 
     #libera os blocos após reorganizar
